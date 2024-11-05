@@ -3,8 +3,8 @@ session_start();
 include 'config.php'; // Include your database configuration
 
 // ClickSend API credentials
-$clicksendUsername = 'lucsun@airforcerp.com';
-$clicksendApiKey = '3DE73515-52CE-5958-9670-D08794948D2D';
+$clicksendUsername = '';
+$clicksendApiKey = '';
 
 // Function to generate a random 6-digit OTP
 function generateOtp() {
