@@ -47,4 +47,18 @@ Currently, MathAmmo is still in development, but you can prepare for its release
 - Debug any issues using your browser’s developer tools or the error logs on your server.
 
 ## Note: MathAmmo App Coming Soon
-The official **MathAmmo app** is still under development and will be available soon. In the meantime, you can prepare by setting up your own version using **Appilix** and PHP. Stay tuned for updates and happy coding!
+The official **MathAmmo app** is still under development and will be available soon. In the meantime, you can prepare by setting up your own version using **Appilix** and PHP. Stay tuned for updates and happy coding! 
+
+
+## No Android App is comming
+Sorry about this but it's coming from a heavy heart that I can't develop a android app because of googles strict policys of needing 20 Android Phones to release a App 
+
+20 Mid Range Phones at the cost of 499.99 USD each * 20 
+9999.8 * 1.0925 = 10924.78 USD so it's not fair to the developer. 
+
+**Explaining the cost**
+499.99 USD each * 20 = 9999.8 
+then add tax in my area its 9.25%
+So 9999.8 * 1.0925 = 10924.78 USD
+
+This is stupid because of Indie Devlopers not having the money including Myself, All of the Phones + Tax is not worth the cost that Im tring for a Free and Open Source APP. Its Just not fair to the Indie Developer to take on the cost. Thanks Google Even though I pay 68.80 USD a Month for Google Workspace for My Domain emails. [TO those that want to take on the cost for the app] Make a Copy of MathAmmo and do what you please. Just not anything illegal in your country please as im not liable for that. 
