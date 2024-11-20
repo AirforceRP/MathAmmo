@@ -61,4 +61,8 @@ Sorry about this but it's coming from a heavy heart that I can't develop a andro
 then add tax in my area its 9.25%
 So 9999.8 * 1.0925 = 10924.78 USD
 
+10924.7815 is the real number but I rounded to the Nearest Cent 
+10924.78
+
+
 This is stupid because of Indie Devlopers not having the money including Myself, All of the Phones + Tax is not worth the cost that Im tring for a Free and Open Source APP. Its Just not fair to the Indie Developer to take on the cost. Thanks Google Even though I pay 68.80 USD a Month for Google Workspace for My Domain emails. [TO those that want to take on the cost for the app] Make a Copy of MathAmmo and do what you please. Just not anything illegal in your country please as im not liable for that. 
