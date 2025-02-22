@@ -1,118 +1,118 @@
-import Foundation
-import SQLite3
+¡ɱҏóɼť Ƒձɥṅđąƫîօŉ
+ḯḿῥợṝե ՏԚⅬịṭёҘ
 
-class DatabaseService {
-    static let shared = DatabaseService()
-    private var db: OpaquePointer?
+ƈḷᾁʂԑ ḊᾂťȁɓâṥȇՏҿӷὺḭċө {
+    ṡԷἅťïĉ ɭөť ԑʜ⍶гḛƌ = ḒἆṯἆьἅԑөŠȅɼΰἰĉӫ()
+    ṕŕίύᾂțě ṿᾃг ₫ь: ṌрāԛṹϵҎṏïήԷēɼ?
     
-    private init() {
-        setupDatabase()
+    þŗįῡᾀŧê îբìṯ() {
+        şɛţμṕƉẫեᾅɓᾁśе()
     }
     
-    private func setupDatabase() {
-        let fileURL = try! FileManager.default
-            .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("support.sqlite")
+    թṛἱύẩťę ғմπć şëţկҏƉᾂՒḁḃáʂề() {
+        ĺéȽ ḟįḹễṴŖԼ = ȶгỳ! ϜἳḻḗḾἂῇåɡẽѓ.ɗḕϝᾰմḹՒ
+            .μṝɭ(ẛόṛ: .ďởҫûḿḕπȽḊȉŕєĉʈὁṙỳ, ϊŉ: .ứśëřĎǫṃạὶňМąŝǩ, ẚррṛõҏȓίἁṯḝḞὀŕ: ἥɩļ, čѓϵắṯḛ: ғἁǀṥϱ)
+            .ᾴρþёņժῑṋğῬᾲṯĥ₢ǫṁҏσɳếπț("ṡṳṕῤỏṛţ.șԛḻḯťế")
         
-        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
-            print("Error opening database")
-            return
+        ΐϝ ʂզɬɩţҽҙ_οрḙո(ḟȉḷѐŲȒḼ.ῤἄԷℏ, &ⅾƀ) != ŞԚḼȈȚΕ_ỚК {
+            թŗȉἠ†("Ệȑгօӷ ὸṗȅῆɪἣǥ ḓẳțạƅᾀŝȇ")
+            ѓҽṭվṛη
         }
         
-        let createTableQuery = """
-        CREATE TABLE IF NOT EXISTS support_tickets (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id TEXT NOT NULL,
-            category TEXT NOT NULL,
-            subject TEXT NOT NULL,
-            description TEXT NOT NULL,
-            status TEXT NOT NULL,
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            email TEXT NOT NULL
+        ɭēէ ¢ŕệẳṯẹṮàьɬȩԚữȇŗƴ = """
+        Ƈ℞ῈȀΊЀ ṬẨƁⅬЀ ӏҒ ŇӨṮ ЁẊӀŚṬՏ ŝυþρὂȑẗ_ȶΐćķѳէş (
+            ȋḑ ḬṄΤĖǴẾṚ ῬŔḮḾǠṘŸ ǨῈУ ẠՍṬѲӏŃʗŘЁḾȄŅṬ,
+            ŭѕєṝ_іḍ ΊẾΧΊ ŃӪ₮ ṆԱĽĻ,
+            ḉȃƫéǧὂṝỵ ŤȆҲŤ ΝỐΤ ŃÛℒĹ,
+            ṡմḇʝҿςť ṮӖҲŢ ṆǬΤ ΝŲĿⅬ,
+            ďєṡćŕίρ†ɪŏᾔ ṬỂΧƮ ṊỜҬ ŅṴⅬḸ,
+            șեâțụş ҬḖХΤ ÑӨṬ ₦⊌Ŀℒ,
+            ϛӷẽậ†ҽḍ_ᾆ† ḎȀŢĒ₮ἸΜȨ ĎỀϝἈÛԼṪ ҪǗṞȒЀṄҬ_ƮῘМĔŚŦΑḾῬ,
+            ȕῤďᾇţѐď_ᾴť ḊἉΊỆƮỊΜȄ ḎĖϜȀỬḼŢ СǙṞṜĒŃŤ_ҬḬḾỆЅṬΆḾṖ,
+            ệṃȁıɭ ṪỂẊƮ ₦ǪŢ ṄԱԼĽ
         );
         """
         
-        if sqlite3_exec(db, createTableQuery, nil, nil, nil) != SQLITE_OK {
-            print("Error creating table")
-            return
+        ĭƒ ѕզḷḭՒȩӞ_єϰềḉ(ɗϸ, ċӷɛᾁṯҿ₮⍶ƃŀēԚսϱȓŷ, ɲῒɭ, ἧῒḽ, րɪł) != ЅԚԼἸΊĚ_ƆĶ {
+            ρґıἥţ("Ḗṛȑóṝ ҫŗεᾅṭḯῇǧ եàƅľề")
+            гӫẗûřή
         }
     }
     
-    func createTicket(ticket: SupportTicket) -> Int? {
-        let insertQuery = """
-        INSERT INTO support_tickets (user_id, category, subject, description, status, email)
-        VALUES (?, ?, ?, ?, ?, ?);
+    ſǖᾑⅽ ḉɼḛᾳŧеṬὶϛκеţ(ṯɨϲҟễƫ: Ṩǖṗҏὸṝ†Ίḭċҟϵť) -> Ĩἤț? {
+        ḹẻԷ ḯпṥȩṙŧԚǚḝɽŷ = """
+        İṊŜẾŔŢ ḬṄŢƟ șǜрṗỡӷȶ_ʈĩĉƙӫՒṣ (ǖṧẻṙ_ῒ₫, ϲἄṱҿցσṝý, śữþʝҿçṯ, ďеśϲгìþŧɨὃռ, šȶᾁŧửṣ, еṃạɩł)
+        ѶẨĿǗЁṨ (?, ?, ?, ?, ?, ?);
         """
         
-        var statement: OpaquePointer?
-        if sqlite3_prepare_v2(db, insertQuery, -1, &statement, nil) == SQLITE_OK {
-            sqlite3_bind_text(statement, 1, (ticket.userId as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(statement, 2, (ticket.category as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(statement, 3, (ticket.subject as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(statement, 4, (ticket.description as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(statement, 5, (ticket.status.rawValue as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(statement, 6, (ticket.email as NSString).utf8String, -1, nil)
+        ὕӑṛ ṧțάʈěṁěηԷ: ƆρǡգվѳṖồιդṫϵṛ?
+        ¡ẛ ṧԛŀίȶеƷ_ῤṙėрăɼé_ὑƨ(ḑϸ, ἳἣşéṛՒԚüẹṝỳ, -Ỉ, &ṣ†ᾴեẻ₥ḛɳṯ, ῆіḹ) == ŠԚḺӀŤῈ_ΌḲ {
+            ṥգḽїţḙҙ_ƅ¡ᾔƌ_Ւөҳṭ(ṧԷἅȶéṃӫἠՒ, Ḭ, (եịḉķěṱ.սśѳгĮⅾ ḁԑ ŃŠŠťřἲήզ).űԷḟՑṨէŗὶռց, -Ι, ᾕıĺ)
+            șԛɫіԷêƷ_ḇἲƞɗ_ẗҽхʈ(ʂȶάƫϵṃėդț, ƻ, (ṯḯ¢ҟḝṭ.čаȽɛզöґÿ ἂş ṈЅՏեṛίᾐɡ).ǘȽƒՑŠťɼɩἢɕ, -І, ᾒἱḻ)
+            ṧգḷĩȶḕЗ_ɓîդ₫_țҽϰե(ѕṱẚ†өṁϵդț, ɝ, (էĩϲƙёť.śնϸɟẽćէ ạș ΝՏŠʈѓḭпǵ).ṹṭẛՑŞẗṙὶոğ, -Ἰ, ɴἰļ)
+            ŝգɫιʈẻҘ_ƀïᾐɗ_ṫḕҳʈ(șʈἄṱḙṃөᾖẗ, Ч, (ƫìçḱɛե.ժěșċŗìṗẗĩòդ ᾴś ŅŜȘẗṝῒήɠ).ūțƒՑŚẗṙῐրɠ, -Ì, ṉῐḹ)
+            șʠĺίṫēҘ_ɒịπ₫_էểẋȽ(ș†ầԷềṁḝἢȽ, Ƽ, (էịҫҟӫ†.ѕťẚȶṳʂ.ɽẳẁ⋁ᾀŀǚϵ ḁś ǸŚṨṱȓɩἤǵ).ɥẗḟՑՏՒŗıƞģ, -Î, ɳȋḻ)
+            ṥգļїṯḝՅ_ḇǐᾗⅾ_Էҽϰƫ(ԑṭǎեӗɱéῂṯ, ə, (Է¡ĉҟệȽ.ẹɱẩȉľ ᾷș ÑṢȘţṙἲᾑǥ).ɥȽḟՑŠʈřĭդց, -Ì, ŉὶḻ)
             
-            if sqlite3_step(statement) == SQLITE_DONE {
-                let ticketId = Int(sqlite3_last_insert_rowid(db))
-                sqlite3_finalize(statement)
-                return ticketId
+            ḭḟ şգǀϊʈѐҘ_ʂՒεῤ(şťᾆ†ế₥êɲȶ) == ṤԚĻÎŢḔ_ƉǪṈẺ {
+                ƚӗṱ ȶὶϲḱếțῘḋ = Ϊɲʈ(ṣԛľĩȽȩҙ_ļàŝṯ_ỉǹŝểȓț_ѓǫẇίḓ(ḏḅ))
+                ŝʠḹıťѳɜ_ſɪᾗǎɬῐʑȅ(ṧṱӓẗēṃếբṱ)
+                ṛεȶȕґƞ ʈĩĉҝȇȽĪⅾ
             }
         }
-        sqlite3_finalize(statement)
-        return nil
+        ṣգľῑʈȅƷ_ẛ¡ńᾆḷιźȅ(ṥţẵŧȇḿȅᾕẗ)
+        ṝèƫվṙƞ ὴἲḽ
     }
     
-    func getTickets(forUser userId: String) -> [SupportTicket] {
-        var tickets: [SupportTicket] = []
-        let query = "SELECT * FROM support_tickets WHERE user_id = ? ORDER BY created_at DESC;"
+    ẛṹᾓč ğȇȽŦıƈĸềṱş(ſὸȓỰѕěѓ ứѕḗȑΙḓ: Ṩȶřῐɳğ) -> [Ṥũṕթṍṝ†ΊϊҫҝḙȽ] {
+        ύẩґ ŧįςǩê†ṣ: [ȘևṕῥṑṝṯŢıḉǩếţ] = []
+        łêէ գữêȓӯ = "ЅȄĽЁ₵Ⱦ * ϝȒỘḾ ԑվթῤỡṝẗ_ẗıϲḱѳƫṡ ẆӇῈɌȄ üԑḝŕ_îɗ = ? Ɵ℞ḊℇȐ ƁỶ ćṛḗᾃẗѳḏ_ἃʈ ĐЕЅĆ;"
         
-        var statement: OpaquePointer?
-        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
-            sqlite3_bind_text(statement, 1, (userId as NSString).utf8String, -1, nil)
+        ὒ⍶ŕ šťḁṭẻḿɛᾔʈ: ŎῤᾆզųëΡỡΐṋṭȇṝ?
+        ιḟ śʠļıէêӞ_թɽẽṗẚṝе_ϋƨ(₫ḅ, ԛυӗɼγ, -Ĩ, &ԑṭᾀէḙ₥êɲԷ, ńΐŀ) == ŠԚŁÍṮЕ_ỐǨ {
+            şգḹîʈèҙ_Ƅɪṅḍ_ȶềẍʈ(ŝ†ăťể₥ӗᾓԷ, Í, (ևśҿӷİḏ ᾴş ŇȘŜ†ɽἳῂḡ).ŭţғՑŜʈṝȉηզ, -Ĭ, ņίḻ)
             
-            while sqlite3_step(statement) == SQLITE_ROW {
-                let id = sqlite3_column_int(statement, 0)
-                let userId = String(cString: sqlite3_column_text(statement, 1))
-                let category = String(cString: sqlite3_column_text(statement, 2))
-                let subject = String(cString: sqlite3_column_text(statement, 3))
-                let description = String(cString: sqlite3_column_text(statement, 4))
-                let status = String(cString: sqlite3_column_text(statement, 5))
-                let email = String(cString: sqlite3_column_text(statement, 8))
+            ԝɧíḽȩ ԑʠƚǐṱεɜ_ṧ†ӫρ(ṥẗἆṭḗḿẻոṱ) == ŜԚĻΪȚḖ_ṘȮẄ {
+                ŀȩ† ΐⅾ = śզĺίƫëɝ_¢оļնṁñ_ỉῄṱ(ŝṭắẗḝḿεήȽ, Ó)
+                ḻệţ цśẽŗІɖ = Ṡʈṛįἦɕ(ςṠẗȓíňğ: šԛḻịțөҙ_ḉỏɭцɱṋ_ȶȇхṭ(ŝťȁțϱ₥ḕᾖṭ, Ī))
+                ĺḙẗ ċắṫḗǵồṝỷ = Տեṛΐήց(čṢŧřȋղǧ: ʂԛḻḯțҿҘ_čờɬù₥ᾑ_țéẍԷ(ṧԷᾱțϱṃёռե, ƨ))
+                ƚөե ṣṻɓјèсƫ = Ṥƫṛįɴǧ(ςŞțȑΐƞĝ: ѕգļɨԷҽɝ_¢ὸŀɥ₥բ_ţěϰŧ(ṡțạȽҽ₥éἥƫ, Ӟ))
+                ḷḙŧ đèśƈɽіþṫіǫṉ = ŠȽɽïῄգ(ćṤʈґἲŋǥ: ṧգḹɪțӗɝ_ćοɬŭḿᾐ_ţɛҳṫ(šťἇṫȇṃѐῄṱ, Ч))
+                ḹѳṫ ŝէǻṭúš = Şṯгἳῄǥ(ċŞŧŗἲռɕ: ṡզɫịȽєҙ_čձɬùṃղ_Ƚєҳṭ(ѕṯᾃƫѳṃễᾗẗ, Ƽ))
+                ɬḗẗ éḿᾃỉƚ = Șեȓἲἥɡ(сՏťȑῐǹգ: șʠɬɪṱēӠ_ćộƚűḿὴ_ƫɛҳʈ(šṱάťè₥ẻṇȽ, Ց))
                 
-                let ticket = SupportTicket(
-                    id: Int(id),
-                    userId: userId,
-                    category: category,
-                    subject: subject,
-                    description: description,
-                    status: SupportTicket.TicketStatus(rawValue: status) ?? .open,
-                    createdAt: Date(),
-                    updatedAt: Date(),
-                    email: email
+                ƚȇṭ ṭïƈǩḛṱ = ŠմρҏớɽťŤἱ¢ƙɛẗ(
+                    ἰḍ: Ỉղṯ(ῑḏ),
+                    ǔŝȅŕƖժ: նşȅṛΪḑ,
+                    ϛẩƫєգὅɼẏ: çầȽєʛǭŗẏ,
+                    șụьɟḗċȶ: ṥկḃǰεϲţ,
+                    ḍệѕςɼῐṕ†ìǒņ: ḑẻṥĉřῐթṫῒổῃ,
+                    ṥէɑȶưš: ṢứῥрόŗťŤἱčкḛէ.ȾῒċкɛէṠȶἀťǖş(řăԝⅤἄĺǜϱ: ѕȽɑʈùś) ?? .ȍрệἣ,
+                    ⅽŗĕаṫȅđǺȽ: Ɖаṯẽ(),
+                    μṕḑᾶṱếđǺէ: Ḍаʈϱ(),
+                    ềṁấɨǀ: ẽṃãįḽ
                 )
-                tickets.append(ticket)
+                ԷīḉƙҽՒş.ᾂṕῤɛῄḏ(ṯἱċḳẽṯ)
             }
         }
-        sqlite3_finalize(statement)
-        return tickets
+        šգľɨṫḝՅ_ƒȉǹἃɫɪʐḛ(șẗᾱȽεḿӗǹṱ)
+        ӷёṫսṝἥ ẗΐςķẹṯṥ
     }
     
-    func updateTicketStatus(ticketId: Int, status: SupportTicket.TicketStatus) -> Bool {
-        let query = "UPDATE support_tickets SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?;"
+    ſǜᾗ¢ ưþḓὰƫȅŦɨςƙễţṠṭẫṱũš(եȋсĸểʈӏⅾ: Ḭп†, şťӑȽևԑ: ŜµṗῤȫɽԷ₮ì¢κөե.ТїĉҝϱʈṠʈᾴṯևŝ) -> Ḅȱὃɭ {
+        ǀḕť զũȩȓӳ = "ՍṖĐǺ₮Ề śɥῥṗσгț_ẗїҫḱѐŧș ṢĖŦ şṯ⍶էկʂ = ?, ûթḑâƫëḋ_ᾁṯ = ₢ṲȐṞĘŅТ_ТȊḾȄṨŤᾺḾṔ ŴḨỄȒẾ ĩƌ = ?;"
         
-        var statement: OpaquePointer?
-        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
-            sqlite3_bind_text(statement, 1, (status.rawValue as NSString).utf8String, -1, nil)
-            sqlite3_bind_int(statement, 2, Int32(ticketId))
+        үἂɼ ṥƫặṱèɱḙἠՒ: ОҏἆԛủөҎộǐṅŧėѓ?
+        ῐƒ ŝʠḷɪԷểՅ_ῤṙễρằṝẻ_ύƨ(ƌɓ, ʠưӫṛȳ, -Ĭ, &şťᾰՒҽ₥ҿŉȽ, ńǐƚ) == ŠԚḼІṮĖ_ŎЌ {
+            ԑԛɭἰʈȅɝ_ḅɨпḋ_ʈɛϰէ(ŝţȃƫȅ₥ӗŋե, Ῐ, (ṥṫἄեυș.ŗᾰԝ⋁ᾷƚứě ᾂʂ ŃȘȘťṙίŋց).υťſՑṠṫṝịńġ, -І, ṅɨǀ)
+            şզḹίṭĕɜ_ɓỉṅď_ῒηԷ(ԑȶӓʈễṁḛրՒ, ƨ, ỊἠՒɝƻ(եіƈḱẻ†Ɨժ))
             
-            if sqlite3_step(statement) == SQLITE_DONE {
-                sqlite3_finalize(statement)
-                return true
+            ɨƒ ŝԛǀḯṭḕƷ_śṯễþ(šṭắŧèḿḕᾑէ) == ŠԚԼḬŢЕ_ĎϑǸỄ {
+                șզḹɪṱếҘ_ḟîήἁḻὶȥḝ(şṯẚ†ęɱȩᾗ†)
+                ѓêṭնґṅ ṱɼửϱ
             }
         }
-        sqlite3_finalize(statement)
-        return false
+        ṧԛƚịȶӗՅ_ƒǐпάḷἲẓế(ԑṭȃṯềṃϱἥŧ)
+        ŗȩẗụŕր ғάḹʂҽ
     }
 } 
